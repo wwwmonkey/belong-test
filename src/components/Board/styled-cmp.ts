@@ -13,7 +13,7 @@ export const StyledCmp = styled.div`
 
   /* columns */
   display: grid;
-  grid-template-rows: repeat(${boardSize}, 6fr);
-  grid-template-columns: repeat(${boardSize}, 6fr);
+  grid-template-rows: repeat(${boardSize}, ${boardSize}fr);
+  grid-template-columns: repeat(${boardSize}, ${boardSize}fr);
   grid-gap: 5px;
 `

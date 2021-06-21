@@ -24,6 +24,7 @@ const Board: React.FC<Props> = (props: Props) => {
       {/* Iterate over the current game state and display off/on tiles */}
       {gameState.map((tile, index: number) => (
         <Tile
+          index={index}
           key={index}
           onClick={handleTileClick.bind(null, index)}
           tile={tile}

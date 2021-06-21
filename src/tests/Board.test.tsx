@@ -1,29 +1,61 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { create, act } from 'react-test-renderer'
+import App from '../components/App'
+
+import { defaultBoard } from '../constants'
 import Board from '../components/Board'
 
 test('At initial state, User should see an empty board.', () => {
-  // TODO: Import the board with no cells set and test
-  render(<Board />)
   // Expect the rendering of a board with mock array to equal a default (empty) board
-  // expect(currentBoard).toEqual(defaultBoardArray)
+  let testRenderer
+  act(() => {
+    testRenderer = create(<App />)
+  })
+
+  // @ts-ignore // unresolvable TS error
+  const testInstance = testRenderer.root
+
+  expect(testInstance.findByType(Board).props.gameState).toEqual(defaultBoard)
 })
 
 test('User can make Cells "alive".', () => {
-  // TODO: Trigger an event "addCell" on board and test
-  render(<Board />)
+  let testRenderer
+  act(() => {
+    testRenderer = create(<App />)
+  })
+
+  // @ts-ignore // unresolvable TS error
+  const testInstance = testRenderer.root
+  const firstTile = testInstance.findByProps({ className: 'btn-0' })
+
+  act(() => {
+    // Click the first tileButton to trigger update of the gameState
+    firstTile.props.onClick()
+  })
+
+  expect(testInstance.findByType(Board).props.gameState).not.toEqual(
+    defaultBoard,
+  )
 })
 
 test('User can make Cells "dead".', () => {
-  // TODO: Trigger and event "removeCell" on an existing live cell
-  render(<Board />)
-})
+  let testRenderer
+  act(() => {
+    testRenderer = create(<App />)
+  })
 
-test('User can trigger "next generation".', () => {
-  // TODO: Trigger event "evolve" on board
-  render(<Board />)
-})
+  // @ts-ignore // unresolvable TS error
+  const testInstance = testRenderer.root
+  const firstTile = testInstance.findByProps({ className: 'btn-0' })
 
-test('User can trigger a "reset" to the initial state.', () => {
-  // TODO: Trigger event "resetBoard" on board
+  act(() => {
+    // Click the first tileButton to trigger update of the gameState
+    firstTile.props.onClick()
+  })
+  act(() => {
+    // Click it again, to reset the gameState to default
+    firstTile.props.onClick()
+  })
+
+  expect(testInstance.findByType(Board).props.gameState).toEqual(defaultBoard)
 })
