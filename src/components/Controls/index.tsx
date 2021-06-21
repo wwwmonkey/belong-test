@@ -1,22 +1,25 @@
 import { GameState } from '../../@types/board'
 import { defaultBoard } from '../../constants'
 
+import { evolveBoard } from '../../utils/evolve'
+
 import { StyledCmp, ResetButton, EvolveButton } from './styled-cmp'
 
 interface Props {
+  gameState: GameState
   onGameStateChanged: (nextGameState: GameState) => void
 }
 
 const Controls: React.FC<Props> = (props: Props) => {
-  const { onGameStateChanged } = props
+  const { gameState, onGameStateChanged } = props
 
   const handleResetClick = () => {
     onGameStateChanged(defaultBoard)
   }
 
   const handleEvolveClick = () => {
-    // TODO: Trigger update of gameState based on rules and cardinality
-    onGameStateChanged(defaultBoard)
+    const evolvedGameState = evolveBoard(gameState)
+    onGameStateChanged(evolvedGameState)
   }
 
   return (

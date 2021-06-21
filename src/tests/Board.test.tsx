@@ -12,7 +12,7 @@ test('At initial state, User should see an empty board.', () => {
     testRenderer = create(<App />)
   })
 
-  // @ts-ignore // unresolvable TS error
+  // @ts-ignore // unresolvable TS error in ext pkg
   const testInstance = testRenderer.root
 
   expect(testInstance.findByType(Board).props.gameState).toEqual(defaultBoard)
@@ -24,7 +24,7 @@ test('User can make Cells "alive".', () => {
     testRenderer = create(<App />)
   })
 
-  // @ts-ignore // unresolvable TS error
+  // @ts-ignore // unresolvable TS error in ext pkg
   const testInstance = testRenderer.root
   const firstTile = testInstance.findByProps({ className: 'btn-0' })
 
@@ -44,7 +44,7 @@ test('User can make Cells "dead".', () => {
     testRenderer = create(<App />)
   })
 
-  // @ts-ignore // unresolvable TS error
+  // @ts-ignore // unresolvable TS error in ext pkg
   const testInstance = testRenderer.root
   const firstTile = testInstance.findByProps({ className: 'btn-0' })
 

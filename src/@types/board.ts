@@ -13,3 +13,10 @@ export enum TileTypes {
 
 // The game state is an array of cells we can switch on and off
 export type GameState = Array<TileTypes>
+
+export interface Cardinals {
+  N: TileTypes
+  E: TileTypes
+  S: TileTypes
+  W: TileTypes
+}

@@ -11,7 +11,7 @@ test('User can trigger a "reset" to the initial state.', () => {
     testRenderer = create(<App />)
   })
 
-  // @ts-ignore // unresolvable TS error
+  // @ts-ignore // unresolvable TS error in ext pkg
   const testInstance = testRenderer.root
   const resetBtn = testInstance.findByProps({ className: 'btn-reset' })
 
@@ -29,26 +29,38 @@ test('User can trigger "next generation".', () => {
     testRenderer = create(<App />)
   })
 
-  // @ts-ignore // unresolvable TS error
+  // @ts-ignore // unresolvable TS error in ext pkg
   const testInstance = testRenderer.root
   const evolveBtn = testInstance.findByProps({ className: 'btn-evolve' })
   // TODO: evolvedBoard should be a known state different from default
   const evolvedBoard = [
-    1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+    0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ]
 
-  // TODO: Probably need to add and click more buttons to get an interesting evolution
+  // TODO: create a method for clicking as this would become tedious
   const firstTile = testInstance.findByProps({ className: 'btn-0' })
+  const secondTile = testInstance.findByProps({ className: 'btn-1' })
+  const thirdTile = testInstance.findByProps({ className: 'btn-2' })
 
   act(() => {
-    // Click the first tileButton to trigger update of the gameState
+    // Click the First tileButton to trigger update of the gameState
     firstTile.props.onClick()
+  })
+  act(() => {
+    // Click the Second tileButton to trigger update of the gameState
 
-    // click the evolve button and gameState should equal defaultBoard
+    secondTile.props.onClick()
+  })
+  act(() => {
+    // Click the Third tileButton to trigger update of the gameState
+    thirdTile.props.onClick()
+  })
+
+  act(() => {
+    // click the evolve button and gameState should equal evolvedBoard
     evolveBtn.props.onClick()
   })
 
-  // TODO: this test will fail until evolution logic is implemented
   expect(testInstance.findByType(Board).props.gameState).toEqual(evolvedBoard)
 })

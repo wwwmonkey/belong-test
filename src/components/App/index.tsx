@@ -27,7 +27,7 @@ const App: React.FC = () => {
       <main>
         {/* Import our game board with State */}
         <Board gameState={gameState} onGameStateChanged={setGameState} />
-        <Controls onGameStateChanged={setGameState} />
+        <Controls gameState={gameState} onGameStateChanged={setGameState} />
       </main>
     </AppWrapper>
   )

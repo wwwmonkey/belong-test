@@ -9,9 +9,9 @@ export const TileButton = styled.button<{
   transition: opacity 0.2s ease-out;
   border: 1px solid var(--white);
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: var(--blue);
     opacity: 1;
+    cursor: crosshair;
   }
 `
