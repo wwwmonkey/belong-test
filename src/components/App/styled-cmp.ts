@@ -10,7 +10,7 @@ export const AppWrapper = styled.div`
 `
 
 export const AppHeader = styled.header`
-  font-size: calc(10px + 2vmin);
+  font-size: 1em;
   padding: 20px 0;
 `
 
