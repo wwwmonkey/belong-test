@@ -5,6 +5,8 @@ import { GameState } from '../../@types/board'
 
 import Tile from '../Tile'
 
+import xorGameState from '../../utils/xorGameState'
+
 interface Props {
   gameState: GameState
   onGameStateChanged: (nextGameState: GameState) => void
@@ -14,10 +16,9 @@ const Board: React.FC<Props> = (props: Props) => {
   const { gameState, onGameStateChanged } = props
 
   const handleTileClick = (index: number) => {
-    console.log(index)
-    // TODO: update gameState here
-    onGameStateChanged(gameState)
+    onGameStateChanged(xorGameState(gameState, index))
   }
+
   return (
     <StyledCmp>
       {/* Iterate over the current game state and display off/on tiles */}
