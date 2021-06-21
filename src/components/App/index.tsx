@@ -4,23 +4,23 @@
 */
 
 import logo from '../../assets/logo.svg'
-import './App.css'
+import { AppWrapper, AppHeader, AppLogo } from './styled-cmp'
 
 import Board from '../Board'
 import Controls from '../Controls'
 
 const App = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="beyond-logo" />
+    <AppWrapper>
+      <AppHeader>
+        <AppLogo src={logo} alt="beyond-logo" />
         <h1>BELONG TECHNICAL TASK</h1>
-      </header>
+      </AppHeader>
       <main className="App-main">
         <Board />
         <Controls />
       </main>
-    </div>
+    </AppWrapper>
   )
 }
 

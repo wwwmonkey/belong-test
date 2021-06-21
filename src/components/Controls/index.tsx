@@ -1,10 +1,10 @@
-import './Controls.css'
+import { StyledCmp } from './styled-cmp'
 
 const Controls = (): JSX.Element => {
   return (
-    <div className="Controls">
+    <StyledCmp>
       {/* TODO: Add any CTA, buttons etc that control the game here */}
-    </div>
+    </StyledCmp>
   )
 }
 

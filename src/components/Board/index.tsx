@@ -1,10 +1,10 @@
-import './Board.css'
+import { StyledCmp } from './styled-cmp'
 
 const Board = (): JSX.Element => {
   return (
-    <div className="Board">
+    <StyledCmp>
       {/* TODO: Envisage we will populate a grid of "cells" here*/}
-    </div>
+    </StyledCmp>
   )
 }
 
